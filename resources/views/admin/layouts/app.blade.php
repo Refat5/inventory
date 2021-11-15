@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @include('admin.layouts.header')
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
+   
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -157,6 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
+    @include('flash::message')
    @yield('content')
     <!-- /.content -->
   </div>
@@ -178,5 +179,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/dist/js/adminlte.min.js')}}"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="{{ asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+
+<script>
+    $('#flash-overlay-modal').modal();
+</script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+
+    $('.datatable').DataTable({
+ 
+      "autoWidth": false,
+      "responsive": true,
+    });
+    </script>
+@stack('js')
 </body>
 </html>

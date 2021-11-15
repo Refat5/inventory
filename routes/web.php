@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,14 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('welcome');
 });
 Route::get('/admin', [AdminController::class, 'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//Category
+
+Route::resource('category', CategoryController::class);
